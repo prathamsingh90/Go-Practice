@@ -1,0 +1,26 @@
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"time"
+)
+
+func main() {
+	start := time.Now()
+
+	input := bufio.NewScanner(os.Stdin)
+	data := make(map[string]int)
+	for input.Scan() {
+		data[input.Text()]++
+	}
+
+	for key, value := range data {
+		if value > 1 {
+			fmt.Printf("Repeated line is: %v\n", key)
+		}
+	}
+	fmt.Printf("Execution Time:%v\n", time.Since(start).Seconds())
+
+}
